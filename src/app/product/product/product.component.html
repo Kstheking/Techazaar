@@ -1,1 +1,27 @@
-<p>product works!</p>
+<nz-card nzHoverable [class]="productOnSale ? 'onSale' : 'notOnSale'">
+    <img nz-image [nzSrc]="imageSource" alt="demo" class="productImage" />
+    <nz-divider></nz-divider>
+    <div nz-row [nzGutter]="16" nzJustify="space-between">
+        <div nz-col nz-span="16">Name: {{ name }}</div>
+        <div nz-col nz-span="16">Price: {{ price }}</div>
+    </div>
+    <div nz-row [nzGutter]="16" nzJustify="space-between">
+
+        <div nz-col nz-span="24">
+            <nz-button-group>
+                <button nz-button nzType="primary" (click)="addToCart()" [disabled]="quantity == 0">
+                    Add to Cart
+                </button>
+                <button nz-button nzType="primary" (click)="removeFromCart()" nzDanger [disabled]="quantityInCart == 0">
+                    Remove from Cart
+                </button>
+            </nz-button-group>
+
+        </div>
+
+    </div>
+    <div nz-row [nzGutter]="16" nzJustify="space-between">
+        <div nz-col nz-span="16">Quantity: {{ quantity }}</div>
+        <div nz-col nz-span="16">Quantity in Cart : {{ quantityInCart }}</div>
+    </div>
+</nz-card>

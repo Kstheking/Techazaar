@@ -1,0 +1,21 @@
+nz-card{
+    width: 300px;
+}
+
+.productImage{
+    width: 300px;
+    height: 300px;
+}
+
+.onSale{
+    background-color: limegreen;
+}
+
+.notOnSale{
+    background-color: cadetblue;
+}
+
+[nz-col]{
+    padding: 6px 6px 6px;
+
+}
