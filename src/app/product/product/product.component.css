@@ -1,21 +1,28 @@
-nz-card{
-    width: 300px;
+nz-card {
+  width: 300px;
+  margin-bottom: 30px;
 }
 
-.productImage{
-    width: 300px;
-    height: 300px;
+.productImage {
+  width: 200px;
+  height: 200px;
 }
 
-.onSale{
-    background-color: limegreen;
+.onSale {
+  background-color: #85ffbd;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
 }
 
-.notOnSale{
-    background-color: cadetblue;
+.notOnSale {
+  background-image: linear-gradient(
+    65.9deg,
+    rgba(85, 228, 224, 1) 5.5%,
+    rgba(75, 68, 224, 0.74) 54.2%,
+    rgba(64, 198, 238, 1) 55.2%,
+    rgba(177, 36, 224, 1) 98.4%
+  );
 }
 
-[nz-col]{
-    padding: 6px 6px 6px;
-
+[nz-col] {
+  padding: 6px 6px 6px;
 }

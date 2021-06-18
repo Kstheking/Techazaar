@@ -17,9 +17,9 @@ export class Product {
     if (this.quantity == 0) this.productOnSale = false;
   }
 
-  removeFromCart(){
+  removeFromCart() {
     --this.quantityInCart;
     ++this.quantity;
-    if(this.quantity) this.productOnSale = true;
+    if (this.quantity) this.productOnSale = true;
   }
 }
