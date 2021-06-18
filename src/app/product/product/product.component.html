@@ -1,5 +1,5 @@
 <div nz-row [nzGutter]="16" nzJustify="space-between">
-    <nz-card *ngFor="let product of productArray; index as i" nzHoverable nz-col nz-span="8" [class]="product.productOnSale ? 'onSale' : 'notOnSale'" >
+    <nz-card *ngFor="let product of productArray; index as i" nzHoverable nz-col nz-span="8" [ngClass]="product.productClasses" >
         <img nz-image [nzSrc]="product.imageSource" alt="demo" class="productImage" />
         <nz-divider></nz-divider>
         <div nz-row [nzGutter]="16" nzJustify="space-between">
@@ -10,9 +10,13 @@
             <button *nzSpaceItem nz-button nzType="primary" (click)="product.addToCart()" [disabled]="product.quantity == 0">
                 Add to Cart
             </button>
-            <button *nzSpaceItem nz-button nzType="primary" (click)="product.removeFromCart()" nzDanger [disabled]="product.quantityInCart == 0">
-                Remove from Cart
-            </button>
+            <ng-container *ngIf="product.quantityInCart != 0">
+                <!-- we need ng-container here because it is a logical container so doesn't append to the dom and doesn't change
+                the flow of the two templates being used here simultaneously *ngIf and *nzSpaceItem -->
+                <button *nzSpaceItem nz-button nzType="primary" (click)="product.removeFromCart()" nzDanger >
+                    Remove from Cart
+                </button>
+            </ng-container>
         </nz-space>
         <div nz-row [nzGutter]="16" nzJustify="space-between">
             <div nz-col nz-span="12">Quantity: {{ product.quantity }}</div>
