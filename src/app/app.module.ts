@@ -18,6 +18,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
 
 registerLocaleData(en);
 
@@ -37,7 +38,8 @@ registerLocaleData(en);
     NzCardModule,
     NzGridModule,
     NzImageModule,
-    NzDividerModule
+    NzDividerModule,
+    NzSpaceModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
