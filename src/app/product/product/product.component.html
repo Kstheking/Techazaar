@@ -6,20 +6,14 @@
             <div nz-col nz-span="12">Name: {{ product.name }}</div>
             <div nz-col nz-span="12">Price: {{ product.price }}</div>
         </div>
-        <div nz-row [nzGutter]="16" nzJustify="space-between">
-    
-            <div nz-col nz-span="24">
-                <nz-button-group>
-                    <button nz-button nzType="primary" (click)="product.addToCart()" [disabled]="product.quantity == 0">
-                        Add to Cart
-                    </button>
-                    <button nz-button nzType="primary" (click)="product.removeFromCart()" nzDanger [disabled]="product.quantityInCart == 0">
-                        Remove from Cart
-                    </button>
-                </nz-button-group>
-            </div>
-    
-        </div>
+        <nz-space>
+            <button *nzSpaceItem nz-button nzType="primary" (click)="product.addToCart()" [disabled]="product.quantity == 0">
+                Add to Cart
+            </button>
+            <button *nzSpaceItem nz-button nzType="primary" (click)="product.removeFromCart()" nzDanger [disabled]="product.quantityInCart == 0">
+                Remove from Cart
+            </button>
+        </nz-space>
         <div nz-row [nzGutter]="16" nzJustify="space-between">
             <div nz-col nz-span="12">Quantity: {{ product.quantity }}</div>
             <div nz-col nz-span="12">Quantity in Cart : {{ product.quantityInCart }}</div>
