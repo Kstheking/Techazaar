@@ -26,3 +26,7 @@ nz-card {
 [nz-col] {
   padding: 6px 6px 6px;
 }
+
+[nz-button]{
+  margin-bottom: 10px;
+}

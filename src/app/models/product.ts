@@ -33,4 +33,14 @@ export class Product {
     ++this.quantity;
     this.updateAttributes();
   }
+
+  counter(count: number){
+    return new Array(count);
+  }
+
+  selectQuantity(qty: number){
+    this.quantityInCart += qty;
+    this.quantity -= qty;
+    this.updateAttributes();
+  }
 }
