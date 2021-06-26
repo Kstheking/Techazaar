@@ -10,10 +10,10 @@
             <button *nzSpaceItem nz-button nzType="primary" (click)="product.addToCart()" [disabled]="product.quantity == 0">
                 Add to Cart
             </button>
-            <ng-container *ngIf="product.quantityInCart > 0">
+            <ng-container *nzSpaceItem >
                 <!-- we need ng-container here because it is a logical container so doesn't append to the dom and doesn't change
                 the flow of the two templates being used here simultaneously *ngIf and *nzSpaceItem -->
-                <button *nzSpaceItem nz-button nzType="primary" (click)="product.removeFromCart()" nzDanger >
+                <button *ngIf="product.quantityInCart > 0" nz-button nzType="primary" (click)="product.removeFromCart()" nzDanger >
                     Remove from Cart
                 </button>
             </ng-container>
