@@ -1,40 +1,40 @@
-<div nz-row [nzGutter]="16" nzJustify="space-between">
-    <nz-card *ngFor="let product of productArray; index as i" nzHoverable nz-col nz-span="8" [ngClass]="product.productClasses" >
-        <img nz-image [nzSrc]="product.imageSource" alt="demo" class="productImage" />
-        <nz-divider></nz-divider>
-        <div nz-row [nzGutter]="16" nzJustify="space-between">
-            <div nz-col nz-span="12">Name: {{ product.name }}</div>
-            <div nz-col nz-span="12">Price: {{ product.price }}</div>
-        </div>
-        <nz-space>
-            <button *nzSpaceItem nz-button nzType="primary" (click)="product.addToCart()" [disabled]="product.quantity == 0">
-                Add to Cart
-            </button>
-            <ng-container *nzSpaceItem >
-                <!-- we need ng-container here because it is a logical container so doesn't append to the dom and doesn't change
+<nz-card nzHoverable nz-col nz-span="8" [ngClass]="product.productClasses">
+    <img nz-image [nzSrc]="product.imageSource" alt="demo" class="productImage" />
+    <nz-divider></nz-divider>
+    <div nz-row [nzGutter]="16" nzJustify="space-between">
+        <div nz-col nz-span="12">Name: {{ product.name }}</div>
+        <div nz-col nz-span="12">Price: {{ product.price }}</div>
+    </div>
+    <nz-space>
+        <button *nzSpaceItem nz-button nzType="primary" (click)="product.addToCart()"
+            [disabled]="product.quantity == 0">
+            Add to Cart
+        </button>
+        <ng-container *nzSpaceItem>
+            <!-- we need ng-container here because it is a logical container so doesn't append to the dom and doesn't change
                 the flow of the two templates being used here simultaneously *ngIf and *nzSpaceItem -->
-                <button *ngIf="product.quantityInCart > 0" nz-button nzType="primary" (click)="product.removeFromCart()" nzDanger >
-                    Remove from Cart
-                </button>
-            </ng-container>
-        </nz-space>
-        <ng-container *ngIf="product.quantity > 0">
-            <button nz-dropdown nz-button [nzDropdownMenu]="menu">
-                Select a Quantity
-                <i nz-icon nzType="down"></i>
+            <button *ngIf="product.quantityInCart > 0" nz-button nzType="primary" (click)="product.removeFromCart()"
+                nzDanger>
+                Remove from Cart
             </button>
-            <nz-dropdown-menu #menu="nzDropdownMenu">
-                <ul nz-menu nzSelectable>
-                    <li nz-menu-item *ngFor="let count of product.counter(product.quantity); index as ind" (click)="product.selectQuantity(ind+1)">
-                        {{ ind + 1 }}
-                    </li>
-                </ul>
-            </nz-dropdown-menu>
         </ng-container>
-        <div nz-row [nzGutter]="16" nzJustify="space-between">
-            <div nz-col nz-span="12">Quantity: {{ product.quantity }}</div>
-            <div nz-col nz-span="12">Quantity in Cart : {{ product.quantityInCart }}</div>
-        </div>
-    </nz-card>
-</div>
-
+    </nz-space>
+    <ng-container *ngIf="product.quantity > 0">
+        <button nz-dropdown nz-button [nzDropdownMenu]="menu">
+            Select a Quantity
+            <i nz-icon nzType="down"></i>
+        </button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu nzSelectable>
+                <li nz-menu-item *ngFor="let count of product.counter(product.quantity); index as ind"
+                    (click)="product.selectQuantity(ind+1)">
+                    {{ ind + 1 }}
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+    </ng-container>
+    <div nz-row [nzGutter]="16" nzJustify="space-between">
+        <div nz-col nz-span="12">Quantity: {{ product.quantity }}</div>
+        <div nz-col nz-span="12">Quantity in Cart : {{ product.quantityInCart }}</div>
+    </div>
+</nz-card>
