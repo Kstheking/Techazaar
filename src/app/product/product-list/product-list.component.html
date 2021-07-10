@@ -1,8 +1,5 @@
 <div nz-row [nzGutter]="16" nzJustify="space-between">
-    <ng-container nz-col *ngFor="let product of productArray" nz-span="8">
-        <app-product  [product]="product">
+    <app-product *ngFor="let product of productArray" [product]="product">
 
-        </app-product> 
-    </ng-container>
-    
+    </app-product> 
 </div>
