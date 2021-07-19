@@ -62,7 +62,41 @@ describe('ProductComponent', () => {
       const cardEl = fixture.debugElement.query(By.css(".productName"));
       expect(cardEl).toBeDefined();
       expect(cardEl.nativeElement.textContent).toEqual(`Name: Cor Lapis`);
+    });
+
+    it('should have a functioning add button', ()=> {
+      const quantityDiv = fixture.debugElement.query(By.css("#quantity"));
+      const quantityInCartDiv = fixture.debugElement.query(By.css("#quantityInCart"));
+
+      expect(quantityDiv.nativeElement.textContent).toEqual(`Quantity: 10`);
+      expect(quantityInCartDiv.nativeElement.textContent).toEqual(`Quantity in Cart : 50`);
+
+      const addButton = fixture.debugElement.query(By.css("#addToCart"));
+      expect(addButton).toBeDefined();
+      addButton.triggerEventHandler('click', null);
+      fixture.detectChanges();
+
+      expect(quantityDiv.nativeElement.textContent).toEqual(`Quantity: 9`);
+      expect(quantityInCartDiv.nativeElement.textContent).toEqual(`Quantity in Cart : 51`);
+    });
+
+    it('should have a functioning remove button', ()=> {
+      const quantityDiv = fixture.debugElement.query(By.css("#quantity"));
+      const quantityInCartDiv = fixture.debugElement.query(By.css("#quantityInCart"));
+
+      expect(quantityDiv.nativeElement.textContent).toEqual(`Quantity: 10`);
+      expect(quantityInCartDiv.nativeElement.textContent).toEqual(`Quantity in Cart : 50`);
+
+      const removeButton = fixture.debugElement.query(By.css("#removeFromCart"));
+      expect(removeButton).toBeDefined();
+      removeButton.triggerEventHandler('click', null);
+      fixture.detectChanges();
+
+      expect(quantityDiv.nativeElement.textContent).toEqual(`Quantity: 11`);
+      expect(quantityInCartDiv.nativeElement.textContent).toEqual(`Quantity in Cart : 49`);
     })
   });
+
+  
 
 });
