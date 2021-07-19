@@ -2,7 +2,7 @@
     <img nz-image [nzSrc]="product.imageSource" alt="demo" class="productImage" />
     <nz-divider></nz-divider>
     <div nz-row [nzGutter]="16" nzJustify="space-between">
-        <div nz-col nz-span="12">Name: {{ product.name }}</div>
+        <div nz-col nz-span="12" class="productName">Name: {{ product.name }}</div>
         <div nz-col nz-span="12">Price: {{ product.price }}</div>
     </div>
     <nz-space>
