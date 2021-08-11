@@ -1,0 +1,33 @@
+<form (ngSubmit)="submitForm(productForm)" #productForm="ngForm">
+    <div ngModelGroup="product">
+
+        <input type="text" name="productName" id="" ngModel required #productName="ngModel" minlength="2" placeholder="Product Name">
+        <div *ngIf="productName.dirty && productName.errors?.required">
+            the product name field is required 
+        </div>
+        <div *ngIf="productName.dirty && productName.errors?.minlength">
+            The product name minimum length is 2 
+        </div>
+
+
+        <input type="number" name="productPrice" id="" ngModel required #productPrice="ngModel" placeholder="Product price">
+        <div *ngIf="productPrice.dirty && productPrice.errors?.required">
+            Product price is required
+        </div>
+        
+        <input type="url" name="productImage" id="" ngModel required #productImage="ngModel" placeholder="Product image url">
+        <div *ngIf=incorrectUrl(productImage.value)>
+            hey ! enter correct urls only ! 
+        </div>
+        <div *ngIf="productImage.dirty && productImage.errors?.required">
+            The image url is required
+        </div>
+
+        <input type="checkbox" name="onSale" id="" ngModel required #onSale="ngModel">
+        <div *ngIf="onSale.dirty && onSale.errors?.required">
+            Please specify if product is on sale or not 
+        </div>
+    </div>
+    <button [disabled]="productForm.errors" type="submit">Create product</button>
+    <div *ngIf="productForm.errors"> Please correct errors in form {{productForm.errors | json}}</div>
+</form>
