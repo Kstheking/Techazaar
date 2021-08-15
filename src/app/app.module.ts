@@ -9,6 +9,7 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -20,8 +21,10 @@ import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { CreateProductComponent } from './product/create-product/create-product.component';
+import { CreateProductReactiveComponent } from './product/create-product-reactive/create-product-reactive.component';
 
 registerLocaleData(en);
 
@@ -30,12 +33,14 @@ registerLocaleData(en);
     AppComponent,
     ProductComponent,
     ProductListComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    CreateProductReactiveComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NzButtonModule,

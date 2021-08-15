@@ -1,0 +1,28 @@
+<form action="" (ngSubmit)="submitForm()">
+    <div [formGroup]="productForm">
+        <input type="text" name="name" formControlName="name" placeholder="Product Name">
+        <div *ngIf="name?.dirty && name?.errors?.required">
+            Name is required
+        </div>
+        
+        <input type="number" name="price" formControlName="price" id="" placeholder="Product price">
+        <div *ngIf="price?.dirty && price?.errors?.required">
+            Price is required
+        </div>
+        <div *ngIf="price?.dirty && price?.errors?.min">
+            Price must be atleast 1
+        </div>
+
+        <input type="url" name="url" id="" formControlName="url" placeholder="Product image url">
+        <div *ngIf="url?.dirty && url?.errors?.required">
+            Image url is required
+        </div>
+        <div *ngIf="url?.dirty && url?.invalid">
+            Please enter valid url
+        </div>
+
+        <input type="checkbox" name="onSale" id="" formControlName="onSale">
+    </div>
+    <button type="submit" [disabled]="productForm.invalid">Submit</button>
+    <div *ngIf="productForm.invalid">Please correct errors in form</div>
+</form>
