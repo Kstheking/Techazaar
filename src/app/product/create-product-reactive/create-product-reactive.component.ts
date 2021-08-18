@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Product } from 'src/app/models/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'create-product-reactive',
@@ -9,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CreateProductReactiveComponent implements OnInit {
   public productForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private productService: ProductService) {
     this.productForm = this.fb.group({
       name: [null, Validators.required],
       price: [0, [Validators.required, Validators.min(1)]],
@@ -34,9 +36,25 @@ export class CreateProductReactiveComponent implements OnInit {
     return this.productForm.get('onSale');
   }
 
+  resetForm(){
+    this.productForm.setValue({
+      name: null,
+      price: 0,
+      url: '',
+      onSale: false
+    })
+  }
+
   submitForm(){
     if(this.productForm.valid){
-      console.log(this.productForm.value);
+      this.productService.addProduct(new Product(
+        this.url?.value, this.name?.value, this.price?.value, this.onSale?.value? 10 : 0, !this.onSale?.value? 10: 0
+      )).subscribe((result: any)=>{
+        console.log(result.msg); //maybe we can add a message service which displays these notifs
+        this.resetForm();
+      }, (err: any) => {
+        console.log(err.msg);
+      })
     }
     else{
       console.log(this.productForm.errors);

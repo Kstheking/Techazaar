@@ -26,6 +26,8 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { CreateProductComponent } from './product/create-product/create-product.component';
 import { CreateProductReactiveComponent } from './product/create-product-reactive/create-product-reactive.component';
 
+import { ProductService } from './services/product.service';
+
 registerLocaleData(en);
 
 @NgModule({
@@ -52,7 +54,10 @@ registerLocaleData(en);
     NzSpaceModule,
     NzDropDownModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

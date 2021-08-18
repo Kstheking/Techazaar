@@ -21,7 +21,8 @@
             Please enter valid url
         </div>
 
-        <input type="checkbox" name="onSale" id="" formControlName="onSale">
+        <input type="checkbox" name="onSale" id="onSale" formControlName="onSale">
+        <label for="onSale">On sale</label>
     </div>
     <button type="submit" [disabled]="productForm.invalid">Submit</button>
     <div *ngIf="productForm.invalid">Please correct errors in form</div>
