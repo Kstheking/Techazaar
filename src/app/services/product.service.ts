@@ -2,7 +2,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { of as ObservableOf } from 'rxjs';
 import { throwError } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Product } from '../models/product';
+
+import { HttpClient } from '@angular/common/http';
+
+import { plainToClass } from 'class-transformer';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +15,7 @@ import { Product } from '../models/product';
 export class ProductService {
 
   private productArray!: Product[];
-  constructor() { 
+  constructor(private http: HttpClient) { 
     this.productArray = [
       new Product('assets/images/donuts/blueDonut.svg', 'Blue Donut', 34, 10, 0),
       new Product('assets/images/donuts/darkOrangeDonut.svg', 'Dark Orange Donut', 34, 10, 0),
@@ -24,7 +29,9 @@ export class ProductService {
   }
 
   getProductList(): Observable<Product[]> {
-    return ObservableOf(this.productArray);
+    return this.http.get<Object[]>('/api/product').pipe(
+      map( (value) => value.map(each => plainToClass(Product, each)) )
+    )
   }
 
   addProduct(product: Product): Observable<any> {
