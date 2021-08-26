@@ -12,6 +12,11 @@ export class ProductComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
+    if (this.product.quantity > 0) this.product.productOnSale = true;
+    else this.product.productOnSale = false;
+    this.product.productClasses = {
+      'onSale': this.product.productOnSale,
+      'notOnSale': !this.product.productOnSale
+    }
   }
 }

@@ -9,7 +9,6 @@ export class Product {
     public quantity: number,
     public quantityInCart: number
   ) {
-    this.updateAttributes();
   }
 
   updateAttributes(){
