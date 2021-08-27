@@ -6,14 +6,14 @@
         <div nz-col nz-span="12">Price: {{ product.price }}</div>
     </div>
     <nz-space>
-        <button *nzSpaceItem nz-button nzType="primary" (click)="product.addToCart()"
+        <button *nzSpaceItem nz-button nzType="primary" (click)="changeQuantity(-1)"
             [disabled]="product.quantity == 0" id="addToCart">
             Add to Cart
         </button>
         <ng-container *nzSpaceItem>
             <!-- we need ng-container here because it is a logical container so doesn't append to the dom and doesn't change
                 the flow of the two templates being used here simultaneously *ngIf and *nzSpaceItem -->
-            <button *ngIf="product.quantityInCart > 0" nz-button nzType="primary" (click)="product.removeFromCart()"
+            <button *ngIf="product.quantityInCart > 0" nz-button nzType="primary" (click)="changeQuantity(1)"
                 nzDanger id="removeFromCart">
                 Remove from Cart
             </button>
@@ -26,8 +26,8 @@
         </button>
         <nz-dropdown-menu #menu="nzDropdownMenu">
             <ul nz-menu nzSelectable>
-                <li nz-menu-item *ngFor="let count of product.counter(product.quantity); index as ind"
-                    (click)="product.selectQuantity(ind+1)">
+                <li nz-menu-item *ngFor="let count of counter; index as ind"
+                    (click)="changeQuantity(-ind - 1)">
                     {{ ind + 1 }}
                 </li>
             </ul>
