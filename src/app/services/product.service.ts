@@ -28,8 +28,8 @@ export class ProductService {
     ];
   }
 
-  getProductList(): Observable<Product[]> {
-    return this.http.get<Object[]>('/api/product').pipe(
+  getProductList(searchString: string = ""): Observable<Product[]> {
+    return this.http.get<Object[]>(`/api/product?q=${searchString}`).pipe(
       map( (value) => value.map(each => plainToClass(Product, each)) )
     )
   }

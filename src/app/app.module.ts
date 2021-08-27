@@ -27,6 +27,9 @@ import { CreateProductComponent } from './product/create-product/create-product.
 import { CreateProductReactiveComponent } from './product/create-product-reactive/create-product-reactive.component';
 
 import { ProductService } from './services/product.service';
+import { SearchProductComponent } from './product/search-product/search-product.component';
+
+import { SearchProductService } from './services/search-product.service';
 
 registerLocaleData(en);
 
@@ -36,7 +39,8 @@ registerLocaleData(en);
     ProductComponent,
     ProductListComponent,
     CreateProductComponent,
-    CreateProductReactiveComponent
+    CreateProductReactiveComponent,
+    SearchProductComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,8 @@ registerLocaleData(en);
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
-    ProductService
+    ProductService,
+    SearchProductService
   ],
   bootstrap: [AppComponent]
 })
