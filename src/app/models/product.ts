@@ -3,6 +3,7 @@ export class Product {
   public productClasses!: any;
   
   constructor(
+    public id: number | null,
     public imageSource: string,
     public name: string,
     public price: number,

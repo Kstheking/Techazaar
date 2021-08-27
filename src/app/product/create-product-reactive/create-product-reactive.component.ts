@@ -48,7 +48,7 @@ export class CreateProductReactiveComponent implements OnInit {
   submitForm(){
     if(this.productForm.valid){
       this.productService.addProduct(new Product(
-        this.url?.value, this.name?.value, this.price?.value, this.onSale?.value? 10 : 0, !this.onSale?.value? 10: 0
+       null , this.url?.value, this.name?.value, this.price?.value, this.onSale?.value? 10 : 0, !this.onSale?.value? 10: 0
       )).subscribe((result: any)=>{
         console.log(result.msg); //maybe we can add a message service which displays these notifs
         this.resetForm();
