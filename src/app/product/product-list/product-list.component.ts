@@ -15,7 +15,7 @@ export class ProductListComponent implements OnInit {
   constructor(public productService: ProductService, private searchProductService: SearchProductService) { }
 
   ngOnInit(): void {
-    this.productList = this.productService.getProductList();
+    this.getProducts();
     this.searchProductService.queryString.subscribe((query) => {
       this.searchProducts(query);
     })
@@ -27,6 +27,10 @@ export class ProductListComponent implements OnInit {
   
   searchProducts(query: string){
     this.productList = this.productService.getProductList(query);
+  }
+
+  getProducts(){
+    this.productList = this.productService.getProductList();
   }
 
 }

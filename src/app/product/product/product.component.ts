@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy, OnChanges, DoCheck } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy, DoCheck } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductService } from 'src/app/services/product.service';
 

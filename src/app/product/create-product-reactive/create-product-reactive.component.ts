@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EventEmitter } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -10,6 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class CreateProductReactiveComponent implements OnInit {
   public productForm!: FormGroup;
+  @Output() refreshProducts: EventEmitter<string> = new EventEmitter();
 
   constructor(private fb: FormBuilder, private productService: ProductService) {
     this.productForm = this.fb.group({
@@ -40,7 +42,7 @@ export class CreateProductReactiveComponent implements OnInit {
     this.productForm.setValue({
       name: null,
       price: 0,
-      url: '',
+      url: null,
       onSale: false
     })
   }
@@ -51,6 +53,7 @@ export class CreateProductReactiveComponent implements OnInit {
        null , this.url?.value, this.name?.value, this.price?.value, this.onSale?.value? 10 : 0, !this.onSale?.value? 10: 0
       )).subscribe((result: any)=>{
         console.log(result.msg); //maybe we can add a message service which displays these notifs
+        this.refreshProducts.emit("refreshItBrother");
         this.resetForm();
       }, (err: any) => {
         console.log(err.msg);
