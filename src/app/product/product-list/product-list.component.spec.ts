@@ -1,4 +1,4 @@
-import { ComponentFixture, inject, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, discardPeriodicTasks, flush, inject, TestBed, tick } from '@angular/core/testing';
 
 import { ProductListComponent } from './product-list.component';
 import { ProductComponent } from '../product/product.component';
@@ -69,12 +69,10 @@ describe('ProductListComponent', () => {
     httpBackend = backend;
   }));
 
-  describe('Product list renders', fakeAsync(() => {
+  it('renders the product list', fakeAsync(() => {
     fixture.detectChanges();
-    httpBackend.expectOne({
-      url: `/api/product?q=`,
-      method: 'GET' //why I can't find this way mentioned in angular docs?
-    }).flush([
+    const httpReq = httpBackend.expectOne('/api/product?q=', 'Get Product list');
+    httpReq.flush([
       {
         id: 1,
         imageSource: "assets/images/donuts/blueDonut.svg",
@@ -92,8 +90,10 @@ describe('ProductListComponent', () => {
         quantityInCart: 0
       }
     ]);
+    expect(httpReq.request.method).toEqual('GET');
     tick();
     fixture.detectChanges();
+    discardPeriodicTasks();
     
     let products = fixture.debugElement.queryAll(By.css('app-product'));
     expect(products.length).toEqual(2);
@@ -110,5 +110,9 @@ describe('ProductListComponent', () => {
     expect(product2NameEl).toBeDefined();
     expect(product2NameEl.nativeElement.textContent).toEqual('Name: Dark Orange Donut');
   }));
+
+  afterEach(() => {
+    httpBackend.verify();
+  })
 
 });

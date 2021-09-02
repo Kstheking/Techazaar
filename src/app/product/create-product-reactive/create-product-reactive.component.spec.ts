@@ -61,12 +61,13 @@ describe('CreateProductReactiveComponent', () => {
     httpReq.flush({
       msg: "Test message"
     }, {
-      status: 200
+      status: 200,
+      statusText: "OK"
     });
     tick();
     expect(component.refreshProducts.emit).toHaveBeenCalledWith("refreshItBrother");
     
-    expect(component.productForm.getRawValue).toEqual({
+    expect(component.productForm.getRawValue()).toEqual({
       name: null,
       price: 0,
       url: null,
@@ -92,12 +93,13 @@ describe('CreateProductReactiveComponent', () => {
     httpReq.flush({
       msg: "Product seems to already have an id assigned"
     }, {
-      status: 400
+      status: 400,
+      statusText: "Aw no this ain't working"
     });
     tick();
     expect(component.refreshProducts.emit).not.toHaveBeenCalled();
     
-    expect(component.productForm.getRawValue).toEqual({
+    expect(component.productForm.getRawValue()).toEqual({
       name: 'Test product',
       price: 20,
       url: 'http://test.product.com',

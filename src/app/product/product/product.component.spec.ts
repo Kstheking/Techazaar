@@ -93,7 +93,8 @@ describe('ProductComponent', () => {
       httpReq.flush({
         msg: 'Successfully updated cart'
       }, {
-        status: 200
+        status: 200,
+        statusText: "OK"
       });
       tick();
       fixture.detectChanges();
@@ -120,7 +121,8 @@ describe('ProductComponent', () => {
       httpReq.flush({
         msg: 'Successfully updated cart'
       }, {
-        status: 200
+        status: 200,
+        statusText: "OK"
       });
       tick();
       fixture.detectChanges();
