@@ -30,6 +30,8 @@ import { ProductService } from './services/product.service';
 import { SearchProductComponent } from './product/search-product/search-product.component';
 
 import { SearchProductService } from './services/search-product.service';
+import { AuthService } from './services/auth.service';
+import { HeaderAttacherInterceptor } from './services/header-attacher.interceptor';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
@@ -67,7 +69,9 @@ registerLocaleData(en);
   providers: [
     { provide: NZ_I18N, useValue: en_US },
     ProductService,
-    SearchProductService
+    SearchProductService,
+    AuthService,
+    HeaderAttacherInterceptor
   ],
   bootstrap: [AppComponent]
 })
