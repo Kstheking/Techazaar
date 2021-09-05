@@ -30,6 +30,9 @@ import { ProductService } from './services/product.service';
 import { SearchProductComponent } from './product/search-product/search-product.component';
 
 import { SearchProductService } from './services/search-product.service';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { ProductDetailsComponent } from './product/product-details/product-details.component';
 
 registerLocaleData(en);
 
@@ -40,7 +43,10 @@ registerLocaleData(en);
     ProductListComponent,
     CreateProductComponent,
     CreateProductReactiveComponent,
-    SearchProductComponent
+    SearchProductComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
