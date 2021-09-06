@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product/product.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -54,6 +54,7 @@ registerLocaleData(en);
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -64,7 +65,7 @@ registerLocaleData(en);
     NzGridModule,
     NzImageModule,
     NzDividerModule,
-    NzSpaceModule,
+    NzSpaceModule,  
     NzDropDownModule
   ],
   providers: [

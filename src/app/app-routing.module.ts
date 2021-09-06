@@ -8,11 +8,13 @@ import { ProductDetailsComponent } from './product/product-details/product-detai
 import { ProductListComponent } from './product/product-list/product-list.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'product/list', component: ProductListComponent},
   {path: 'product/create', component: CreateProductReactiveComponent, canActivate: [CreateProductGuard], canDeactivate: [CreateProductGuard]},
-  {path: 'product/details/:id', component: ProductDetailsComponent}
+  {path: 'product/details/:id', component: ProductDetailsComponent},
+  {path: '**', redirectTo: '/register'}
 ];
 
 @NgModule({
