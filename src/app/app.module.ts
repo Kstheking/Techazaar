@@ -35,6 +35,7 @@ import { HeaderAttacherInterceptor } from './services/header-attacher.intercepto
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
+import { CreateProductGuard } from './guards/create-product.guard';
 
 registerLocaleData(en);
 
@@ -71,7 +72,8 @@ registerLocaleData(en);
     ProductService,
     SearchProductService,
     AuthService,
-    HeaderAttacherInterceptor
+    HeaderAttacherInterceptor,
+    CreateProductGuard
   ],
   bootstrap: [AppComponent]
 })

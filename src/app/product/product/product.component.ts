@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ChangeDetectionStrategy, DoCheck } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductService } from 'src/app/services/product.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-product',
@@ -11,11 +12,13 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductComponent implements OnInit, DoCheck {
   @Input() public product!: Product;
   public counter!: Array<number>;
-  constructor(private productService: ProductService) { }
+  public loggedIn: boolean = false;
+  constructor(private productService: ProductService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.counter = new Array(this.product.quantity);
     this.updateAttributes();
+    if(this.authService.getToken()) this.loggedIn = true;
   }
 
   ngDoCheck(){

@@ -7,7 +7,7 @@
     </div>
     <nz-space>
         <button *nzSpaceItem nz-button nzType="primary" (click)="changeQuantity(-1)"
-            [disabled]="product.quantity == 0" id="addToCart">
+            [disabled]="(product.quantity == 0) || (!loggedIn)" id="addToCart">
             Add to Cart
         </button>
         <ng-container *nzSpaceItem>
@@ -37,4 +37,5 @@
         <div nz-col nz-span="12" id="quantity">Quantity: {{ product.quantity }}</div>
         <div nz-col nz-span="12" id="quantityInCart">Quantity in Cart : {{ product.quantityInCart }}</div>
     </div>
+    <button routerLink="/product/details/{{product.id}}">Check product details</button>
 </nz-card>

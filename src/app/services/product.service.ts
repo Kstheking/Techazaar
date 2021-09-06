@@ -14,7 +14,6 @@ import { plainToClass } from 'class-transformer';
 })
 export class ProductService {
 
-  private productArray!: Product[];
   constructor(private http: HttpClient) { 
   }
 
@@ -22,6 +21,12 @@ export class ProductService {
     return this.http.get<Object[]>(`/api/product?q=${searchString}`).pipe(
       map( (value) => value.map(each => plainToClass(Product, each)) )
     )
+  }
+
+  getProduct(id: string | null) : Observable<Product>{
+    return this.http.get<Object>(`/api/product/${id}`).pipe(
+      map ((value) => plainToClass(Product, value))
+    );
   }
 
   addProduct(product: Product): Observable<any> {
