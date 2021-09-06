@@ -3,22 +3,26 @@ import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, RouterStateSnapshot
 import { Observable } from 'rxjs';
 import { CreateProductReactiveComponent } from '../product/create-product-reactive/create-product-reactive.component';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CreateProductGuard implements CanActivate, CanDeactivate<CreateProductReactiveComponent> {
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
 
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    if (this.authService.getToken()) {
+    let token = this.authService.getToken();
+    console.log("can Activate token ", token);
+    if (token) {
       return true;
     }
+    this.router.navigate(['/login']);
     return false;
   }
   canDeactivate(

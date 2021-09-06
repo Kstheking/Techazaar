@@ -7,8 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private token: string | null = null;
-
   constructor(private http: HttpClient) { }
 
   login(user: string, password: string) : Observable<any>{
@@ -19,11 +17,11 @@ export class AuthService {
   }
 
   setToken(token: string){
-    this.token = token;
+    sessionStorage.setItem("token",token);
   }
 
   getToken(){
-    return this.token;
+    return sessionStorage.getItem("token");
   }
 
   register(user: string, password: string): Observable<any>{

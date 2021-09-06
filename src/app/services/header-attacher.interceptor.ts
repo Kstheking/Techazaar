@@ -14,6 +14,7 @@ export class HeaderAttacherInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log('inteceptor triggered');
     let token = this.authService.getToken();
     if(token){
       const authReq = request.clone({

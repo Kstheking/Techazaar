@@ -10,7 +10,7 @@ import { CommonModule, registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -73,7 +73,11 @@ registerLocaleData(en);
     ProductService,
     SearchProductService,
     AuthService,
-    HeaderAttacherInterceptor,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeaderAttacherInterceptor,
+      multi: true
+    },
     CreateProductGuard
   ],
   bootstrap: [AppComponent]
