@@ -21,8 +21,9 @@ nz-sider {
 nz-content {
   background: rgba(16, 142, 233, 1);
   color: #fff;
-  min-height: 120px;
-  line-height: 120px;
+  /* min-height: 120px;
+  line-height: 120px; */
+  /* these css are for the product list I suppose */
 }
 
 nz-layout {
@@ -31,4 +32,9 @@ nz-layout {
 
 nz-layout:last-child {
   margin: 0;
+}
+
+.navBar{
+  padding-left: 0%;
+  padding-right: 0%;
 }

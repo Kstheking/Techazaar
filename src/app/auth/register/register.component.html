@@ -1,9 +1,24 @@
 <h3>{{ message }}</h3>
-<form (ngSubmit)="register(registerForm)" #registerForm="ngForm">
+<form (ngSubmit)="register(registerForm)" #registerForm="ngForm" nz-form class="registerForm">
   <div ngModelGroup="userDetails">
-    <input type="text" name="username" ngModel required />
-    <input type="password" name="password" ngModel required />
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your username!">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text" nz-input name="username" ngModel required placeholder="Username" class="fullWidth"/>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your password!">
+        <nz-input-group nzPrefixIcon="lock">
+          <input type="password" nz-input name="password" ngModel required placeholder="Password" class="fullWidth"/>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    
+    
   </div>
 
-  <button type="submit" [disabled]="registerForm.errors">Register</button>
+  <button nz-button type="submit" [disabled]="registerForm. errors ? true : false" class="fullWidth" nzType="primary">Register</button>
 </form>

@@ -21,6 +21,8 @@ import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { CreateProductComponent } from './product/create-product/create-product.component';
@@ -66,7 +68,9 @@ registerLocaleData(en);
     NzImageModule,
     NzDividerModule,
     NzSpaceModule,  
-    NzDropDownModule
+    NzDropDownModule,
+    NzFormModule,
+    NzIconModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },

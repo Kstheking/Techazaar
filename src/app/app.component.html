@@ -1,13 +1,19 @@
-<!-- <nz-layout >
-  <nz-header>Header</nz-header>
-  <search-product></search-product>
+<nz-layout >
+  <nz-header class="navBar">
+    <ul nz-menu nzTheme="dark" nzMode="horizontal">
+      <li nz-menu-item routerLink="/register">Register</li>
+      <li nz-menu-item routerLink="/login">Login</li>
+      <li nz-menu-item routerLink="/product/list">Product List</li>
+      <li nz-menu-item routerLink="/product/create">Create Product</li>
+    </ul>
+  </nz-header>
+  <!-- <search-product></search-product> -->
   <nz-content>
-      <app-product-list #productList></app-product-list>
+    <router-outlet></router-outlet>
   </nz-content>
-  <create-product-reactive (refreshProducts)="productList.getProducts()"></create-product-reactive>
+  <!-- <create-product-reactive (refreshProducts)="productList.getProducts()"></create-product-reactive> -->
   <nz-footer>Footer</nz-footer>
-</nz-layout> -->
+</nz-layout>
 
 <!-- remember to put the nav bar  -->
 
-<router-outlet></router-outlet>
