@@ -23,6 +23,9 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { CreateProductComponent } from './product/create-product/create-product.component';
@@ -70,7 +73,10 @@ registerLocaleData(en);
     NzSpaceModule,  
     NzDropDownModule,
     NzFormModule,
-    NzIconModule
+    NzIconModule,
+    NzInputModule,
+    NzInputNumberModule,
+    NzCheckboxModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },

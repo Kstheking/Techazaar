@@ -1,29 +1,73 @@
-<form action="" (ngSubmit)="submitForm()">
-    <div [formGroup]="productForm">
-        <input type="text" name="name" formControlName="name" placeholder="Product Name">
-        <div *ngIf="name?.dirty && name?.errors?.required">
-            Name is required
-        </div>
-        
-        <input type="number" name="price" formControlName="price" id="" placeholder="Product price">
-        <div *ngIf="price?.dirty && price?.errors?.required">
-            Price is required
-        </div>
-        <div *ngIf="price?.dirty && price?.errors?.min">
-            Price must be atleast 1
-        </div>
+<form nz-form (ngSubmit)="submitForm()" class="createProductForm">
+  <div [formGroup]="productForm">
+    <nz-form-item>
+      <nz-form-label  nzRequired nzFor="name">
+        Name
+      </nz-form-label>
+      <nz-form-control  nzErrorTip="Please enter name">
+        <input
+          type="text"
+          name="name"
+          formControlName="name"
+          placeholder="Product Name"
+          id="name" nz-input
+        />
+      </nz-form-control>
+    </nz-form-item>
 
-        <input type="url" name="url" id="" formControlName="url" placeholder="Product image url">
+    <nz-form-item>
+      <nz-form-label  nzRequired nzFor="price">
+        Price
+      </nz-form-label>
+      <nz-form-control  nzErrorTip="Please enter price">
+        <input
+          type="number"
+          name="price"
+          formControlName="price"
+          placeholder="Product Price"
+          id="price"
+          nz-input
+        />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label  nzRequired nzFor="url">
+        Image url
+      </nz-form-label>
+      <nz-form-control  nzErrorTip="Please enter url">
+        <input
+          type="url"
+          name="url"
+          formControlName="url"
+          placeholder="Product Image url"
+          id="url"
+          nz-input
+        />
+      </nz-form-control>
+    </nz-form-item>
+
+    <!-- <input type="url" name="url" id="" formControlName="url" placeholder="Product image url">
         <div *ngIf="url?.dirty && url?.errors?.required">
             Image url is required
         </div>
         <div *ngIf="url?.dirty && url?.invalid">
             Please enter valid url
-        </div>
+        </div> -->
 
-        <input type="checkbox" name="onSale" id="onSale" formControlName="onSale">
-        <label for="onSale">On sale</label>
-    </div>
-    <button type="submit" [disabled]="productForm.invalid">Submit</button>
+    <nz-form-item>
+      <nz-form-control >
+        <label nz-checkbox formControlName="onSale">
+          <span> This product is on sale </span>
+        </label>
+      </nz-form-control>
+    </nz-form-item>
+
+    <!-- <input type="checkbox" name="onSale" id="onSale" formControlName="onSale">
+        <label for="onSale">On sale</label> -->
+    <button nz-button type="submit" [disabled]="productForm.invalid" class="submitButton">
+      Submit
+    </button>
     <div *ngIf="productForm.invalid">Please correct errors in form</div>
+  </div>
 </form>
