@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.0.3",
+    "@angular/cli": "~12.1.4",
     "@angular/common": "~12.0.3",
     "@angular/compiler": "~12.0.3",
     "@angular/core": "~12.0.3",
@@ -20,8 +21,10 @@
     "@angular/router": "~12.0.3",
     "@types/events": "^3.0.0",
     "class-transformer": "^0.4.0",
+    "enhanced-resolve": "^3.3.0",
     "express": "^4.17.1",
     "ng-zorro-antd": "^11.4.2",
+    "path": "^0.12.7",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
@@ -30,7 +33,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.0.3",
-    "@angular/cli": "~12.1.4",
     "@angular/compiler-cli": "~12.0.3",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",

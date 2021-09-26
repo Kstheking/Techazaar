@@ -22,7 +22,7 @@ export class HeaderAttacherInterceptor implements HttpInterceptor {
           'X-AUTH-HEADER',
           token
         ),
-        url : `${request.url}`
+        url : `https://techazaar-server.herokuapp.com/${request.url}`
       });
       request = authReq;
     }
