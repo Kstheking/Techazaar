@@ -26,6 +26,12 @@ export class HeaderAttacherInterceptor implements HttpInterceptor {
       });
       request = authReq;
     }
+    else{
+      const req = request.clone({
+        url : `https://techazaar-server.herokuapp.com/${request.url}`
+      })
+      request = req;
+    }
     return next.handle(request);
   }
 }
