@@ -21,7 +21,8 @@ export class HeaderAttacherInterceptor implements HttpInterceptor {
         headers: request.headers.set(
           'X-AUTH-HEADER',
           token
-        )
+        ),
+        url : `${request.url}`
       });
       request = authReq;
     }
