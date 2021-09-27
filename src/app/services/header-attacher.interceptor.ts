@@ -22,13 +22,13 @@ export class HeaderAttacherInterceptor implements HttpInterceptor {
           'X-AUTH-HEADER',
           token
         ),
-        url : `https://techazaar-server.herokuapp.com/${request.url}`
+        url : `https://techazaar-server.herokuapp.com${request.url}`
       });
       request = authReq;
     }
     else{
       const req = request.clone({
-        url : `https://techazaar-server.herokuapp.com/${request.url}`
+        url : `https://techazaar-server.herokuapp.com${request.url}`
       })
       request = req;
     }
