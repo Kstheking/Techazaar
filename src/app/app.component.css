@@ -40,5 +40,5 @@ nz-layout:last-child {
 }
 
 .is-active{
-  color: tomato;
+  background-color: tomato;
 }
