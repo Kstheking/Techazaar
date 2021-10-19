@@ -38,3 +38,7 @@ nz-layout:last-child {
   padding-left: 0%;
   padding-right: 0%;
 }
+
+.is-active{
+  color: tomato;
+}
